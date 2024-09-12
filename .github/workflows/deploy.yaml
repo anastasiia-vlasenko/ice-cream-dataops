@@ -6,7 +6,7 @@ on:
     paths:
       - .github/workflows/deploy.yaml
       - ice-cream-dataops/modules/** # run when changes in modules
-      - ice-cream-dataops/config.prod.yaml # run when changes in config.dev.yaml
+      - ice-cream-dataops/config.dev.yaml # run when changes in config.dev.yaml
   # Allow manual triggering of the workflow
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ env:
 jobs:
   build-modules:
     runs-on: ubuntu-latest
-    environment: prod
+    environment: dev
     env:
         CDF_CLUSTER: ${{ secrets.CDF_CLUSTER }}
         CDF_PROJECT: ${{ secrets.CDF_PROJECT }}
@@ -31,9 +31,9 @@ jobs:
       - name: Install cdf-tk
         run: pip install cognite-toolkit
       - name: "Build the templates"
-        run: cdf-tk build --build-dir=./build --env=prod ice-cream-dataops
+        run: cdf-tk build --build-dir=./build --env=dev ice-cream-dataops
       - name: "Deploy"
         run: echo "Deploying to ${CDF_PROJECT} with ${CDF_CLUSTER}"
       - name: "Deploy the templates"
         run: |
-          cdf-tk deploy --env=prod
+          cdf-tk deploy --env=dev
