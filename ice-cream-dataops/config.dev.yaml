@@ -1,0 +1,33 @@
+environment:
+  name: dev
+  project: cdf-bootcamp-05-test # Your CDF project
+  type: dev #prod, staging or dev
+  selected:
+    - modules/data_foundation
+    - modules/ice_cream_api
+    - modules/uc_oee
+
+variables:
+  CDF_PROJECT: cdf-bootcamp-05-test
+  IDP_CLIENT_ID: ${IDP_CLIENT_ID}
+  IDP_CLIENT_SECRET: ${IDP_CLIENT_SECRET}
+  IDP_TENANT_ID: 16e3985b-ebe8-4e24-9da4-933e21a9fc81 # Since we all have the same tenant, this number does not change
+  CDF_URL: https://westeurope-1.cognitedata.com # This is related to the cluster where the CDF project is hosted.
+  IDP_SCOPES: https://westeurope-1.cognitedata.com/.default
+
+  # Groups
+  data_developer_source_id: 4750c40e-8df6-43cd-9d85-9732ecb42f1f
+  oee_data_pipeline_source_id: 7b9e1dc6-aa0e-4386-b27b-116fce13ae3b
+  readwrite_source_id: eae4db9f-25ee-47fb-905d-896787a40d9d #admin-tk
+  readonly_source_id: 2453f0e1-068b-4a9d-8927-a03686d7aabd # data_explorer
+  icapi_extractors_source_id: 72bc4240-b98f-4357-ad46-88275ddfa847
+
+  # Client Ids
+  sp_oee_client_id: dfdd7df9-d144-403b-87fd-6659972255f6
+  sp_oee_client_secret: ${IDP_CLIENT_SECRET}
+  icapi_extractors_client_id: ${ICAPI_EXTRACTORS_CLIENT_ID}
+  icapi_extractors_client_secret: ${ICAPI_EXTRACTORS_CLIENT_SECRET}
+
+  modules:
+    icapi_ds_external_id: ds_ice_cream_api
+    uc_oee_ds_external_id: ds_uc_oee
